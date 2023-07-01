@@ -2,10 +2,10 @@
 #
 #     mix run priv/repo/seeds.exs
 #
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Preneur.Repo.insert!(%Preneur.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+
+Preneur.Repo.insert!(%Preneur.Users.User{email: "w@wz.com", password_hash: "123123123"})
+Preneur.Repo.insert!(%Preneur.Users.User{email: "w@w.com", password_hash: "123123123"})
+
+Preneur.Repo.insert!(%Preneur.Items.Product{user_id: 1, name: "Adidas", photo: "https://picsum.photos/200/300"})
+Preneur.Repo.insert!(%Preneur.Items.Product{user_id: 1, name: "BBQ", photo: "https://picsum.photos/200/300"})
+Preneur.Repo.insert!(%Preneur.Items.Product{user_id: 2, name: "Cue", photo: "https://picsum.photos/200/300"})

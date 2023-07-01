@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :preneur, Preneur.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "jun",
+  password: "`",
   hostname: "localhost",
   database: "preneur_dev",
   stacktrace: true,

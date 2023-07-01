@@ -1,5 +1,6 @@
 defmodule PreneurWeb.Router do
   use PreneurWeb, :router
+  use Pow.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,16 +15,43 @@ defmodule PreneurWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PreneurWeb do
+  # pipeline :protected do
+  #   plug Pow.Plug.RequireAuthenticated, error_handler: PreneurWeb.AuthErrorHandler
+  # end
+
+  # pipeline :not_authenticated do
+  #   plug Pow.Plug.RequireNotAuthenticated, error_handler: PreneurWeb.AuthErrorHandler
+  # end
+
+
+  scope "/" do
     pipe_through :browser
 
-    get "/", PageController, :home
+    pow_routes()
   end
 
+  scope "/", PreneurWeb do
+    pipe_through :browser
+    # pipe_through [:browser, :protected]
+    get "/", PageController, :home
+    resources "/products", ProductController
+  end
+
+
+  # scope "/", PreneurWeb do
+  #   pipe_through [:browser, :not_authenticated]
+
+  #   get "/signup", RegistrationController, :new, as: :signup
+  #   post "/signup", RegistrationController, :create, as: :signup
+  #   get "/login", SessionController, :new, as: :login
+  #   post "/login", SessionController, :create, as: :login
+  # end
   # Other scopes may use custom stacks.
   # scope "/api", PreneurWeb do
   #   pipe_through :api
   # end
+
+
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:preneur, :dev_routes) do
