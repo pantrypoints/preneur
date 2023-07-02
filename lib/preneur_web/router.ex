@@ -30,7 +30,7 @@ defmodule PreneurWeb.Router do
     pow_routes()
   end
 
-  scope "/api", CityWeb.Api, as: :api do
+  scope "/api", PreneurWeb.Api, as: :api do
     pipe_through :api
 
     post "/products", ProductController, :create
