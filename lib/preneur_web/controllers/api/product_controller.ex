@@ -11,8 +11,9 @@ defmodule PreneurWeb.Api.ProductController do
     case Products.create_product(product_params) do
       {:ok, product} ->
         conn
+        |> put_status(:created)
         # |> fetch_flash(:info, "You can't change your own admin status")
-        |> redirect(to: "/")
+        # |> redirect(to: "/")
         # |> redirect(to: Routes.post_index_path(PreneurWeb.Endpoint, :index))        
         # |> render("created.json")
         # |> render("thanks.html")        
