@@ -1,6 +1,8 @@
-# Readme
+# Web / API Demo
 
 This is the web / API for the Enstack Hackathon of Team Pantrypoints
+
+The live version is at https://enstack.gigalixirapp.com/
 
 
 ## Instructions
