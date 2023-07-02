@@ -33,7 +33,7 @@ defmodule PreneurWeb.Router do
   scope "/", PreneurWeb do
     pipe_through :browser
     # pipe_through [:browser, :protected]
-    get "/", PageController, :home
+    get "/", ProductController, :index
     resources "/products", ProductController
   end
 
